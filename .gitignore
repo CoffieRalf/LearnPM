@@ -1,13 +1,12 @@
 
 *target*
-
 *.jar
 *.war
 *.ear
 *.class
-.metadata/
-.DS_Store
+.metadata/**/*
 .recommenders/
+
 # eclipse specific git ignore
 *.pydevproject
 .project
@@ -24,8 +23,12 @@ local.properties
 .settings/
 .loadpath
 
-# External tool builders
-.externalToolBuilders/
+#Nerviger Bloedsinn
+.DS_Store
+.metadata/**/*
+metadata/*
+
+
 
 # Locally stored "Eclipse launch configurations"
 *.launch
