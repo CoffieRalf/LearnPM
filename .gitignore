@@ -3,8 +3,8 @@
 *.war
 *.ear
 *.class
-.metadata/**
-.recommenders/**
+.metadata/
+.recommenders/
 # eclipse specific git ignore
 *.pydevproject
 .project
