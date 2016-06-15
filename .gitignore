@@ -1,9 +1,12 @@
+
 *target*
+
 *.jar
 *.war
 *.ear
 *.class
 .metadata/
+.DS_Store
 .recommenders/
 # eclipse specific git ignore
 *.pydevproject
