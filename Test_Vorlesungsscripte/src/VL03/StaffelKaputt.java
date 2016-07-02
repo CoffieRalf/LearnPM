@@ -7,49 +7,46 @@ package VL03;
  */
 
 public class StaffelKaputt extends Thread {
-    boolean Besitz = false ;
     private Object stab;
-    StaffelKaputt(Object stab) { 
-    	this.stab = stab; 
+    boolean Besitz = false; 
+    
+    StaffelKaputt(Object stab){
+    	this.stab = stab;
     	}
+    
     public void run() {
-    	takenap();
-    	nimmStab();
+    	while(true){
+    	nimmStab(); 
     	laufen(); 
     	stabAbgeben();
     	}
+    	}
     
-    
-    
-    private synchronized void nimmStab() {
-    	while(Besitz){
-            try { 
-            	System.out.println("Stab nehmen"); 
-            	wait();
-            	
-            	} 
-            catch (Exception e) {          	
-            }
-            
-    	}Besitz=true;	
-        }
-    private synchronized void stabAbgeben() {
-    	System.out.println("Abgeben");       
-        	notifyAll(); 
+    private void stabAbgeben() {
+        synchronized (stab) { 
         	Besitz = false; 
+        	stab.notifyAll();
+        	System.out.println("abgeben ... ");
+        	}
+    }
+    
+    private void nimmStab() {
+    	while(Besitz){
+        synchronized (stab) {
+        	System.out.println("haben will ... ");
+            try {
+            	stab.wait(); 
+            	
+            }catch (Exception e) { 
+            	
+            }
+            System.out.println("hab ... ");
+        }Besitz=true;
         }
-    void laufen() {
+    }
+    void laufen() { 
     	System.out.println("laufe ... "); 
     	}
-    void takenap(){   	
-    	try {
-        	System.out.println("schlafen ... "); 
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
     
     public static void main(String[] args) {
         Object stab = new Object();

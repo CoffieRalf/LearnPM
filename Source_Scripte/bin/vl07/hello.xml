@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Carsten Gips
+    25.02.2016
+-->
+
+
+<project default="helloWorld">
+
+    <target name="helloWorld">
+        <echo message="Hello World :-)"/>
+    </target>
+
+</project>
+
